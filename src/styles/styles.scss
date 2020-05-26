@@ -1,0 +1,30 @@
+@import "~normalize.css";
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ececec;
+  box-sizing: border-box;
+}
+
+.debug {
+  position: fixed;
+  right: 0;
+  border: 1px solid red;
+  pointer-events: none;
+
+  h2 {
+    margin: 0;
+  }
+
+  &--position {
+    top: 50px;
+  }
+}
