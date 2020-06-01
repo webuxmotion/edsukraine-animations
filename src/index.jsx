@@ -2,12 +2,13 @@ import './styles/styles.scss';
 import setCanvasSize from './utils/setCanvasSize';
 import resizeHandler from './utils/resizeHandler';
 import captureMouse from './utils/captureMouse';
+import captureTouch from './utils/captureTouch';
 import keycode from './utils/keycode';
-import './utils.js';
 
 window.onload = function() {
   var canvas = document.getElementById('canvas');
   var mouse = captureMouse(canvas);
+  var touch = captureTouch(canvas);
   var debugEl = document.querySelector('.debug');
   var debugPositionEl = document.querySelector('.debug--position');
 
@@ -28,12 +29,10 @@ window.onload = function() {
 
   function onTouchEvent(event) {
     debugEl.innerHTML = `<h2>${event.type}</h2>`;
-    
-    switch (event.type) {
-      case 'mousedown': {
-        var posStr = "x: " + mouse.x + ", y: " + mouse.y;
-        debugPositionEl.innerHTML = `<h2>${posStr}</h2>`;
-      }
+
+    if (touch.isPressed) {
+      var posStr = "x: " + touch.x + ", y: " + touch.y;
+      debugPositionEl.innerHTML = `<h2>${posStr}</h2>`;
     }
   }
 
